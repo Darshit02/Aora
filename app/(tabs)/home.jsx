@@ -12,12 +12,13 @@ import { images } from "../../constants";
 import SearchInput from "../../components/search-input";
 import Tranding from "../../components/tranding";
 import EmptyState from "../../components/empty-state";
-import { getAllPosts } from "../../lib/appwrite";
+import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import useAppWrite from "../../lib/useAppWrite";
 import VideoCard from "../../components/video-card";
 
 const Home = () => {
   const {data : posts ,refetch} = useAppWrite(getAllPosts)
+  const {data : latestPost } = useAppWrite(getLatestPosts)
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
@@ -60,7 +61,7 @@ const Home = () => {
               <Text className="text-gray-100 text-lg font-pregular mb-3">
                 Latest Videos
               </Text>
-              <Tranding posts={[{ id: 1 }, { id: 2 }, { id: 3 }] ?? []} />
+              <Tranding posts={latestPost ?? []} />
             </View>
           </View>
         )}
