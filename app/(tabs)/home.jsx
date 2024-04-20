@@ -4,7 +4,6 @@ import {
   FlatList,
   Image,
   RefreshControl,
-  Alert,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -26,7 +25,6 @@ const Home = () => {
     await refetch()
     setRefreshing(false);
   };
-// console.log(posts);
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
